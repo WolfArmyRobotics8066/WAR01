@@ -75,7 +75,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    drive.Autonomous1();
+    drive.Autonomous();
   }
 
   /**

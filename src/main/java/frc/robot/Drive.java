@@ -10,14 +10,14 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class Drive {
 
-    private final Joystick joystick = new Joystick(0);
+    private Joystick joystick = new Joystick(0);
 
     private WPI_VictorSPX victorController0 = new WPI_VictorSPX(0);
     private WPI_VictorSPX victorController1 = new WPI_VictorSPX(1);
-    private WPI_VictorSPX victorCont roller2 = new WPI_VictorSPX(2);
+    private WPI_VictorSPX victorController2 = new WPI_VictorSPX(2);
     private WPI_VictorSPX victorController3 = new WPI_VictorSPX(3);
 
-    private final Victor victor888_01 = new Victor(0); //Roller
+    private Victor victor888_01 = new Victor(0); //Roller
     private Victor victor888_02 = new Victor(1); //Lifter
 
     private SpeedControllerGroup leftMotor = new SpeedControllerGroup(victorController0, victorController1);
@@ -65,10 +65,6 @@ public class Drive {
         if (joystick.getRawButton(6)) {
             maxVelocity = 0.9;
         } else { maxVelocity = 0.5; }
-        
-        if (joystick.getRawButton(5) && maxVelocity > 0) {
-            maxVelocity = 0.25;
-        }
 
         drive.arcadeDrive((maxVelocity * joystick.getRawAxis(1)) * -1, 
                            maxVelocity * joystick.getRawAxis(0));
@@ -86,7 +82,7 @@ public class Drive {
 
     }
 
-    public void Autonomous1() {
+    public void Autonomous() {
 
         //This function causes the robot to walk for 2 seconds and stop.
 
