@@ -24,8 +24,10 @@ public class Robot extends TimedRobot {
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
-  private Drive drive = new Drive();
-
+  public static Controller controller;
+  private Drive drive;
+  private Collector collector;
+  
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -36,6 +38,10 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("Autoline", kCustomAuto);
     m_chooser.addOption("AutoLine2", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
+
+    controller = new Controller();
+    drive = new Drive();
+    collector = new Collector();
   }
 
   /**
@@ -84,6 +90,9 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     drive.MovementDrive();
+    
+    collector.LifterPowerCells();
+    collector.DropPowerCells();
   }
 
   /**
